@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>{{ the_title }}</h2>
+
+<form method='POST' action='/search4'>
+<table>
+
+<tr><td>翻译吧: </td><td><input type="text" name="words" /></td></tr>
+
+</table>
+<p>输入所需后,点击翻译：</p>
+<p><input value='翻译吧' type='SUBMIT'></p>
+</form>
+
+{% endblock %}
+
