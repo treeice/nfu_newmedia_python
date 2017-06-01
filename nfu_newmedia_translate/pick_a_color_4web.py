@@ -10,7 +10,7 @@ def entry_page() -> 'html':
     return render_template('entry.html',
                            the_title='欢迎来到翻译吧！')
 
-@app.route('/pick_a_color', methods=['POST'])
+@app.route('/pick_a_words', methods=['POST'])
 def pick_a_color() -> 'html':
     """提取用户web 请求POST方法提交的数据（输入），不执行任何动作（处理），直接返回（输出）。"""
     user_color = request.form['user_color']	
