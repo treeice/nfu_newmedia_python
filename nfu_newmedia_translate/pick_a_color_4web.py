@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*- 
+﻿ # -*- coding: utf-8 -*- 
 from flask import Flask, render_template, request, escape
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def entry_page() -> 'html':
     """Display this webapp's HTML form."""
     return render_template('entry.html',
-                           the_title='欢迎来到网上选色！')
+                           the_title='欢迎来到翻译吧！')
 
 @app.route('/pick_a_color', methods=['POST'])
 def pick_a_color() -> 'html':
