@@ -11,7 +11,7 @@ def entry_page() -> 'html':
                            the_title='欢迎来到翻译吧！')
 
 @app.route('/pick_a_words', methods=['POST'])
-def pick_a_color() -> 'html':
+def pick_a_words() -> 'html':
     """提取用户web 请求POST方法提交的数据（输入），不执行任何动作（处理），直接返回（输出）。"""
     user_color = request.form['user_color']	
     return render_template('results.html',
