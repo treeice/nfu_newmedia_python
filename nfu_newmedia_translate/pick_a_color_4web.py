@@ -16,7 +16,7 @@ def pick_a_words() -> 'html':
     user_words = request.form['user_words']	
     return render_template('results.html',
                            the_title = '以下是您的翻译结果：',
-                           the_words = user_color,
+                           the_words = user_words,
                            )
 
 if __name__ == '__main__':
