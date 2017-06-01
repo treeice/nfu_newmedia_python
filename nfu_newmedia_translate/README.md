@@ -13,11 +13,9 @@ nfu_newmedia_translate
 用户得到输出结果为：中文(text)
 ## 从输入到输出，本组作品使用了：
 ### 模块
-[requests]
-[hashlib]
-[json]
-### 数据
-* [简中CLDR localenames](https://github.com/unicode-cldr/cldr-localenames-modern/blob/master/main/zh-Hans/territories.json)
+[requests](http://www.python-requests.org/en/master/)
+[hashlib](https://docs.python.org/2/library/hashlib.html)
+[json](http://www.runoob.com/json/json-tutorial.html)
 ### API
 * [github](https://api.github.com/)
 [百度翻译api](https://fanyi-api.baidu.com/api/trans/vip/translate)
