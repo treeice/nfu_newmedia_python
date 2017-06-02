@@ -1,4 +1,4 @@
-nfu_newmedia_translate
+web_translate_baidu_api
 
 
 		
