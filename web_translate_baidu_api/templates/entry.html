@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
 {% block body %}
 
 <h2>{{ the_title }}</h2>
-
+<h3><font color="black">下方输入</font></h3>
 <form method='POST' action='/search4'>
-
+<font color="#9933FF">
 <table>
 
 <tr><td>翻译吧: </td><td><input type="text" name="words" /></td></tr>
@@ -17,4 +17,3 @@
 </form>
 <body>
 {% endblock %}
-
