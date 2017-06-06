@@ -1,6 +1,8 @@
 body {
   font-family:      Verdana, Geneva, Arial, sans-serif;
+  background: url (bird_fly.gif) center center;
   font-size:        medium;
+  background-size :cover;
   background-color: tan;
   margin-top:       5%;
   margin-bottom:    5%;
@@ -42,7 +44,14 @@ td, th {
 .confirmentry {
   font-weight:      600; 
 }
+body{
+background:url(bird_fly.gif) center center;
+background-size: contain;
 
+margin:0;
+padding:0;
+position:relative;
+        }
 /*** Tables ***/
 
 table {

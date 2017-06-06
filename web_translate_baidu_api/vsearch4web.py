@@ -19,8 +19,8 @@ def log_request(req: 'flask_request', res: str) -> None:
 def do_search() -> 'html':
 	translate_q= request.form['words']
 	title = '以下是您的结果：'
-	key=('me2iM88Qkfps8cQMaOKf')
-	translate_appid=20170525000049081
+	key='me2iM88Qkfps8cQMaOKf'
+	translate_appid= 20170525000049081
 	translate_salt=random.randint(0,9999999999)
  
 
