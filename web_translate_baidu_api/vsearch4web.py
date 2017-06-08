@@ -22,50 +22,51 @@ def do_search() -> 'html':
 	key='me2iM88Qkfps8cQMaOKf'
 	translate_appid= 20170525000049081
 	translate_salt=random.randint(0,9999999999)
-#拼接签名
-	translate_sign=str(translate_appid)+str(translate_q)+str(translate_salt)+str(key)
+ 
+
+	translate_sign=str(translate_appid)+str(translate_q)+str(translate_salt)+str(key)#拼接签名
 #为网址的参数中的签名加密md5
 	m = hashlib.md5(translate_sign.encode("utf8"))
 	translate_sign_md5=m.hexdigest()
 #网址参数连接
 	url_1 = 'http://api.fanyi.baidu.com/api/trans/vip/translate?'  
-	url_2 = 'q='+translate_q+'&from=zh&to=yue&appid='+str(translate_appid)+'&salt='+str(translate_salt)+'&sign='+translate_sign_md5
+	url_2 = 'q='+translate_q+'&from=auto&to=zh&appid='+str(translate_appid)+'&salt='+str(translate_salt)+'&sign='+translate_sign_md5
 	url= url_1+url_2
 #网页打开  
 	r=requests.get(url)
 	e=r.text
 #json转码
-	data = json.loads(e)	
-#错误的情况的处理
+	data = json.loads(e)
+#jieguo
 	if 'trans_result' in data.keys():
-		the_result=data['trans_result'][0]['dst']
+		translate_result=data['trans_result'][0]['dst']
 	else: 
 		if 'error_code' in data.keys():
 			if '54000' in data['error_code']:
-				the_result='请在选框中输入文字'
+				translate_result='请在选框中输入文字'
 			elif '52001' in data['error_code']:
-				the_result='请求超时请重试'
+				translate_result='请求超时请重试'
 			elif '52002' in data['error_code']:
-				the_result='系统错误请重试'  
+				translate_result='系统错误请重试'  
 			elif '54003' in data['error_code']:
-				the_result='请降低您的调用频率'
+				translate_result='请降低您的调用频率'
 			elif '58001' in data['error_code']:
-				the_result='不支持该语种的翻译'
+				translate_result='不支持该语种的翻译'
 			elif '54005' in data['error_code']:
-				the_result='请降低长query的发送频率，3s后再试'
+				translate_result='请降低长query的发送频率，3s后再试'
 			elif '52003' in data['error_code']:
-				the_result='未授权用户,请检查您的appid是否正确'
+				translate_result='未授权用户,请检查您的appid是否正确'
 			elif '58000' in data['error_code']:
-				the_result='客户端IP,非法检查您填写的IP地址是否正确，可修改您填写的服务器IP地址'
+				translate_result='客户端IP,非法检查您填写的IP地址是否正确，可修改您填写的服务器IP地址'
 			elif '54004' in data['error_code']:
-				the_result='账户余额不足,请前往管理控制台为账户充值'
+				translate_result='账户余额不足,请前往管理控制台为账户充值'
 			else:
-				the_result='未知问题'
+				translate_result='未能在已知的错误代码中，发现问题'
 		else:
 			pass
 	return render_template('results.html',
 							the_title=title,
-							result=the_result)
+							need_words=translate_result)
 
 
 @app.route('/')
