@@ -18,6 +18,7 @@ web_translate_baidu_api
 [requests](http://www.python-requests.org/en/master/)
 [hashlib](https://docs.python.org/2/library/hashlib.html)
 [json](http://www.runoob.com/json/json-tutorial.html)
+[random](http://www.runoob.com/python/func-number-random.html)
 ### API
 * [github](https://api.github.com/)
 [百度翻译api](https://fanyi-api.baidu.com/api/trans/vip/translate)

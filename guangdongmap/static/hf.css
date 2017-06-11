@@ -1,7 +1,7 @@
 body {
   font-family:      Verdana, Geneva, Arial, sans-serif;
-  
-  background-color: vsearch4web.py
+  font-size:        medium;
+  background-color: tan;
   margin-top:       5%;
   margin-bottom:    5%;
   margin-left:      10%;
@@ -42,14 +42,7 @@ td, th {
 .confirmentry {
   font-weight:      600; 
 }
-body{
-background:url(bird_fly.gif) center center;
-background-size: contain;
 
-margin:0;
-padding:0;
-position:relative;
-        }
 /*** Tables ***/
 
 table {
@@ -76,3 +69,4 @@ input[type=submit] {
 select {
   font-size:        125%;
 }
+

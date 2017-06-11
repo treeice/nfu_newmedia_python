@@ -1,18 +1,21 @@
 ﻿{% extends 'base.html' %}
 
 {% block body %}
+<span style="display:block; text-align:center">
+<h1>{{ the_title }}</h1>
 
-<h2>{{ the_title }}</h2>
-
-<form method='POST' action='/pick_a_words'>
+<form method='POST' action='/search4'>
 <table>
-<th colspan="2">在此输入需要翻译的文本：</th>
-<tr><td>英文: </td><td><input type="words" name="user_words" /></td></tr>
+<span style="display:block; text-align:center center ">
+<tr><td>输入您的id: </td><td><input type="text" name="my_id" style="background:#46A3FF;color:#F9F900 "/></td></tr>
+<tr><td>输入您的密钥: </td><td><input type="password" name="my_password" style="background:#46A3FF;color:#F9F900 "/></td></tr>
+<tr><td>输入您的要查的内容：</td><td><input type="text" " name='words' style="background:#46A3FF;color:#F9F900 "/></td></tr>
+
 </table>
-<p>输入完成后, 单击翻译吧：</p>
-<p><input value='翻译吧！' type='SUBMIT'></p>
-</form>
+<p>输入所需后,点击翻译：</p>
+<p><input value='翻译吧' type='SUBMIT'style="background:#46A3FF"></p>
 
 </form>
 <body>
 {% endblock %}
+
