@@ -65,6 +65,8 @@ def do_search() -> 'html':
 				translate_result='账户余额不足,请前往管理控制台为账户充值'
                         elif '102' in data['error_code']:
                                 translate_result='不支持的语言类型'
+                        elif '302' in data['error_code']:
+                                translate_result='翻译查询失败'
 			else:
 				translate_result='未能在已知的错误代码中，发现问题'
 		else:
