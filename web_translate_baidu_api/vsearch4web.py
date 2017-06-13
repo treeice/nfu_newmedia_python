@@ -51,7 +51,7 @@ def do_search() -> 'html':
 				translate_result='系统错误请重试'  
 			elif '54003' in data['error_code']:
 				translate_result='请降低您的调用频率'
-                        elif '54002' in data['error_code']:
+                        elif '54000' in data['error_code']:
 				translate_result='必填参数为空'
 			elif '58001' in data['error_code']:
 				translate_result='不支持该语种的翻译'
