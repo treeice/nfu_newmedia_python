@@ -63,6 +63,8 @@ def do_search() -> 'html':
 				translate_result='客户端IP,非法检查您填写的IP地址是否正确，可修改您填写的服务器IP地址'
 			elif '54004' in data['error_code']:
 				translate_result='账户余额不足,请前往管理控制台为账户充值'
+                        elif '102' in data['error_code']:
+                                translate_result='不支持的语言类型'
 			else:
 				translate_result='未能在已知的错误代码中，发现问题'
 		else:
