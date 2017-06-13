@@ -83,7 +83,7 @@ def entry_page() -> 'html':
     return render_template('entry.html',
                            the_title='欢迎来到翻译吧')
 from termcolor import colored
-text=colored（'title','blue'）
+text=colored（'欢迎来到翻译吧','blue'）
 
 @app.route('/viewlog')
 def view_the_log() -> 'html':
