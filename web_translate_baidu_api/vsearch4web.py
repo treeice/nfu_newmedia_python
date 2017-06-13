@@ -78,7 +78,8 @@ def entry_page() -> 'html':
     """Display this webapp's HTML form."""
     return render_template('entry.html',
                            the_title='欢迎来到翻译吧')
-
+from termcolor import colored
+text=colored（'title','blue'）
 
 @app.route('/viewlog')
 def view_the_log() -> 'html':
@@ -98,4 +99,3 @@ def view_the_log() -> 'html':
 
 if __name__ == '__main__':
     app.run(debug=True)
-              
