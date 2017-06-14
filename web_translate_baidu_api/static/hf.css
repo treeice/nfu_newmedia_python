@@ -43,7 +43,7 @@ td, th {
   font-weight:      600; 
 }
 body{
-background:url(123.jpg) center center;
+background:url(bird_fly.gif) center center;
 background-size: contain;
 
 margin:0;
@@ -76,4 +76,3 @@ input[type=submit] {
 select {
   font-size:        125%;
 }
-<bgsound src="Attention.mp3" />

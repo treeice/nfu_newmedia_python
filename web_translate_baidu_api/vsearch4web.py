@@ -1,4 +1,4 @@
-﻿ # -*- coding: utf-8 -*- 
+ # -*- coding: utf-8 -*- 
 from flask import Flask, render_template, request, escape
 import json
 import hashlib
@@ -21,17 +21,18 @@ def do_search() -> 'html':
 	title = '以下是您的结果：'
 	key= request.form['my_password']
 	translate_appid= request.form['my_id']
+	translate_from= request.form['pick_from_language']
+	translate_to= request.form['pick_to_language']
 	translate_salt=random.randint(0,9999999999)
- 
 
-	translate_sign=str(translate_appid)+str(translate_q)+str(translate_salt)+str(key)#拼接签名
+#拼接签名
+	translate_sign=str(translate_appid)+str(translate_q)+str(translate_salt)+str(key)
 #为网址的参数中的签名加密md5
 	m = hashlib.md5(translate_sign.encode("utf8"))
 	translate_sign_md5=m.hexdigest()
 #网址参数连接
 	url_1 = 'http://api.fanyi.baidu.com/api/trans/vip/translate?'  
-	url_2 = 'q='+translate_q+'&from=auto&to=ko&appid='+str(translate_to)+'&appid='+str(translate_appid)+'&salt='+str
-(translate_salt)+'&sign='+translate_sign_md5
+	url_2 = 'q='+translate_q+'&from='+str(translate_from)+'&to='+str(translate_to)+'&appid='+str(translate_appid)+'&salt='+str(translate_salt)+'&sign='+translate_sign_md5
 	url= url_1+url_2
 #网页打开  
 	r=requests.get(url)
@@ -51,8 +52,6 @@ def do_search() -> 'html':
 				translate_result='系统错误请重试'  
 			elif '54003' in data['error_code']:
 				translate_result='请降低您的调用频率'
-                        elif '54000' in data['error_code']:
-				translate_result='必填参数为空,检查是否少参数'
 			elif '58001' in data['error_code']:
 				translate_result='不支持该语种的翻译'
 			elif '54005' in data['error_code']:
@@ -63,12 +62,8 @@ def do_search() -> 'html':
 				translate_result='客户端IP,非法检查您填写的IP地址是否正确，可修改您填写的服务器IP地址'
 			elif '54004' in data['error_code']:
 				translate_result='账户余额不足,请前往管理控制台为账户充值'
-                        elif '102' in data['error_code']:
-                                translate_result='不支持的语言类型'
-                        elif '302' in data['error_code']:
-                                translate_result='翻译查询失败'
 			else:
-				translate_result='未能在已知的错误代码中，发现问题'
+				translate_result='请正确填入密钥'
 		else:
 			pass
 	return render_template('results.html',
@@ -82,8 +77,7 @@ def entry_page() -> 'html':
     """Display this webapp's HTML form."""
     return render_template('entry.html',
                            the_title='欢迎来到翻译吧')
-from termcolor import colored
-text=colored（'欢迎来到翻译吧','brown'）
+
 
 @app.route('/viewlog')
 def view_the_log() -> 'html':
@@ -103,3 +97,4 @@ def view_the_log() -> 'html':
 
 if __name__ == '__main__':
     app.run(debug=True)
+              
