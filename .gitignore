@@ -53,5 +53,3 @@ __pycache__
 # Files
 *.log created by Python runtime
 
-web_translate_baidu_api/templates/entry.html
-web_translate_baidu_api/templates/entry.html
