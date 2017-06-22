@@ -4,10 +4,13 @@
 <span style="display:block; text-align:center">
 <h2>{{ the_title }}</h2>
 
-<p>百度翻译后返回以下结果：</p>
+<p>百度翻译后返回以下：</p>
 <table>
 <span style="display:block;text-align:center">
-</td><td>{{ need_words }}</td></tr>
+<p></td><td>选择输入的语言类型:{{ translate_from_language  }}</td></tr></p>
+<p></td><td>选择输出的语言类型:{{   translate_to_language  }}</td></tr></p>
+</td><td>需要翻译的内容:{{ want_words }}</td></tr>
+</td><td>得到翻译的结果:{{ need_words }}</td></tr>
 
 </table>
 

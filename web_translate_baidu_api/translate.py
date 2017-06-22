@@ -1,4 +1,6 @@
- # -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*- 
+#!/usr/bin/env Python
+
 from flask import Flask, render_template, request, escape
 import json
 import hashlib
@@ -7,26 +9,36 @@ import random
 
 app = Flask(__name__)
 
+import language_data 
+import language_data_01 
+l = language_data.language_from_to()
+l_01 = language_data_01.language_from_to_01()
 
-def log_request(req: 'flask_request', res: str) -> None:
-    """Log details of the web request and the results."""
-    with open('vsearch.log', 'a', encoding='utf8') as log:
-        print(req.form, req.remote_addr, req.user_agent, res, file=log, sep='|')
-		
+l_list = [k for k in l.from_to.keys()]
+l_list_01 = [k for k in l_01.from_to_01.keys()]
 
-	
-@app.route('/search4', methods=['POST'])
-def do_search() -> 'html':
+l_dict_order = {k:v for k, v in l.from_to.items()}
+l_dict_order_01 = {k:v for k, v in l_01.from_to_01.items()}
+l_dict_reverse = {v:k for k, v in l.from_to.items()}
+l_dict_reverse_01 = {v:k for k, v in l_01.from_to_01.items()}
+
+
+@app.route('/translate', methods=['POST'])
+def translate() -> 'html':
 	translate_q= request.form['words']
 	title = '以下是您的结果：'
 	key= request.form['my_password']
 	translate_appid= request.form['my_id']
-	translate_from= request.form['pick_from_language']
-	translate_to= request.form['pick_to_language']
 	translate_salt=random.randint(0,9999999999)
+	translate_q=str(translate_q)
+	#下列是语言类型选框的代码
+	entry_translate_from= request.form['pick_from_language']
+	translate_from=l_dict_order[entry_translate_from]
+	entry_translate_to= request.form['pick_to_language']
+	translate_to=l_dict_order_01[entry_translate_to]
 
 #拼接签名
-	translate_sign=str(translate_appid)+str(translate_q)+str(translate_salt)+str(key)
+	translate_sign=str(translate_appid)+translate_q+str(translate_salt)+str(key)
 #为网址的参数中的签名加密md5
 	m = hashlib.md5(translate_sign.encode("utf8"))
 	translate_sign_md5=m.hexdigest()
@@ -64,11 +76,13 @@ def do_search() -> 'html':
 				translate_result='账户余额不足,请前往管理控制台为账户充值'
 			else:
 				translate_result='请正确填入密钥'
-		else:
-			pass
 	return render_template('results.html',
 							the_title=title,
-							need_words=translate_result)
+							need_words=translate_result,
+							translate_from_language=entry_translate_from,
+							translate_to_language=entry_translate_to,
+							want_words=translate_q,
+							)
 
 
 @app.route('/')
@@ -76,24 +90,9 @@ def do_search() -> 'html':
 def entry_page() -> 'html':
     """Display this webapp's HTML form."""
     return render_template('entry.html',
+                           enry_language_list = l_list,
+						   enry_language_list_01 = l_list_01,
                            the_title='欢迎来到翻译吧')
-
-
-@app.route('/viewlog')
-def view_the_log() -> 'html':
-    """Display the contents of theX log file as a HTML table."""
-    contents = []
-    with open('vsearch.log') as log:
-        for line in log:
-            contents.append([])
-            for item in line.split('|'):
-                contents[-1].append(escape(item))
-    titles = ('表单内容', '访问者IP', '浏览器', '运行结果')
-    return render_template('viewlog.html',
-                           the_title='查看日志',
-                           the_row_titles=titles,
-                           the_data=contents,)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

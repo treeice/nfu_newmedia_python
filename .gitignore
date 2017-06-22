@@ -53,4 +53,7 @@ __pycache__
 # Files
 *.log created by Python runtime
 
+<<<<<<< HEAD
 king_hero_data/static/hf.css
+=======
+>>>>>>> d3726fa4866bdb735a97a8c52ade2d8d085a2c8e
