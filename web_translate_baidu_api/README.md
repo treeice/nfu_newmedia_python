@@ -80,7 +80,7 @@ web_translate_baidu_api
 
 > - 以下是web请求前的准备工作
 
-> - 1. 在网页[百度翻译平台](http://api.fanyi.baidu.com/api/trans/product/apidoc)中，手动复制出所有的支持语言列表，保存成两个tsv档，一份是28个源语言的语言类型和一份27个目标语言的语言类型，保存到本地的data文件夹中。分别存在data文件夹中的[data/language_data.tsv](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/data/language_data.tsv)和[data/language_data_01.tsv](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/data/language_data_01.ts)。
+> - 1. 在网页[百度翻译平台](http://api.fanyi.baidu.com/api/trans/product/apidoc)中，手动复制出所有的支持语言列表，保存成两个tsv档，一份是28个源语言的语言类型和一份27个目标语言的语言类型，保存到本地的data文件夹中。分别存在data文件夹中的[data/language_data.tsv](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/data/language_data.tsv)和[data/language_data_01.tsv](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/data/language_data_01.tsv)。
 
 > - 2. 在[language_data.py](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/language_data.py)和[language_data_01.py](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/language_data_01.py)中定义两个类language_from_to ()和language_from_to_01 (),读取[data/language_data.tsv](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/data/language_data.tsv)和[data/language_data_01.tsv](https://github.com/treeice/nfu_newmedia_python/blob/master/web_translate_baidu_api/data/language_data_01.tsv)两个数据档，并分别把数据返回一个语言类型的字典，建立以语言类型的中文说明为键，相对应的英文简称为值的字典self.from_to和self.from_to_01(见代码self.from_to = {d['language_from']:d['language_to'] for d in list_dict_language}和self.from_to_01 = {d['language_from']:d['language_to'] for d in list_dict_language})
 
