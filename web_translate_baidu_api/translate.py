@@ -19,8 +19,7 @@ l_list_01 = [k for k in l_01.from_to_01.keys()]
 
 l_dict_order = {k:v for k, v in l.from_to.items()}
 l_dict_order_01 = {k:v for k, v in l_01.from_to_01.items()}
-l_dict_reverse = {v:k for k, v in l.from_to.items()}
-l_dict_reverse_01 = {v:k for k, v in l_01.from_to_01.items()}
+
 
 
 @app.route('/translate', methods=['POST'])
