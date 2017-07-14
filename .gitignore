@@ -53,4 +53,7 @@ __pycache__
 # Files
 *.log created by Python runtime
 
-king_hero_data/static/hf.css
+# data files for 二F 
+province/data/*.tsv
+province/__note__/
+
